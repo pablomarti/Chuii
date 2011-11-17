@@ -1,23 +1,33 @@
 <div>
-	<div id="ideaContent">
-		<%= render "ideaInfo" %>
-	</div>
+	<div class="main">
+		<div id="container" class="left space">
+			<div id="ideaContent">
+				<%= render "ideaInfo" %>
+			</div>
 
-	<% if userLogedIn && @idea.user_id == @user.id %>
-		<div>
-			<%= link_to "Edit idea", editIdea_path(@idea.id), :remote => true %>
+			<% if userLogedIn && @idea.user_id == @user.id %>
+				<div>
+					<%= link_to "Edit idea", editIdea_path(@idea.id), :remote => true %>
+				</div>
+			<% end %>
+
+			<div id="addToFavorites">
+				<%= render "addToFavorites" %>
+			</div>
 		</div>
-	<% end %>
 
-	<div id="addToFavorites">
-		<%= render "addToFavorites" %>
+		<div id="aboutAuthor" class="right column">
+			<%= link_to @idea.user.fullName, profile_path(@idea.user_id) %>
+		</div>
+
+		<%= clearBox %>
 	</div>
 
 	<div>
 		<strong>Similar Ideas</strong>
-	</div>
 	
-	<div id="similarIdeas">
-		<%= render :partial => "idea", :collection => @similarIdeas %>
+		<div id="similarIdeas">
+			<%= render :partial => "idea", :collection => @similarIdeas %>
+		</div>
 	</div>
 </div>

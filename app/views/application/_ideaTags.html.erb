@@ -1,0 +1,8 @@
+<% if !tags.empty? %>
+	<div>
+		<span>Tags:</span> 
+		<% @idea.tags.map{ |tag| %>
+			<%= link_to_tag tag %>
+		<% } %>
+	</div>
+<% end %>

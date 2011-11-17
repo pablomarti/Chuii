@@ -5,6 +5,11 @@
  *= require_self
  *= require_tree . 
 */
+
+
+
+/**************************************** Basic **********************************/
+
 *{
 	font-family: "Helvetica Neue", Tahoma;
     -o-font-smoothing: antialiased;
@@ -35,19 +40,34 @@ input{
 	font-size:14px;
 }
 
-.bigTextFields{
-	width:400px;
+.left{
+	float:left;
 }
 
-.chuiiButton{
-	width:60px;
+.right{
+	float:right;
 }
 
+.clear{
+	clear:both;
+}
+
+.bigTitle{
+	font-size:18px;
+}
+
+/********************************** Application **********************************/
 #header{
 	background:#E8E8E8;
-	width:100%;
+	width:1000px;
 	height:auto;
 	margin:10px auto 0px auto;
+}
+
+#content{
+	width:1000px;
+	background:#E8E8E8;
+	margin:0px auto 0px auto;
 }
 
 #search{
@@ -56,30 +76,8 @@ input{
 	margin:5px auto 5px auto;
 }
 
-#content{
-	background:#E8E8E8;
-}
-
-.leftFeed{
-	float:left;
-	width:500px;
-}
-
-.rightBox{
-	width:400px;
-	height:auto;
-	float:right;
-}
-
-.clear{
-	clear:both;
-}
-
-.hidden{
-}
-
 #footer{
-	width:100%;
+	width:1000px;
 	height:30px;
 	margin:10px auto 5px auto;
 	color:#E8E8E8;
@@ -93,3 +91,32 @@ input{
 	color:#B90504;
 	font-weight:bold;
 }
+
+
+/************************************* Forms *************************************/
+
+.bigTextFields{
+	width:400px;
+}
+
+.chuiiButton{
+	width:60px;
+}
+
+.leftFeed{
+	float:left;
+	width:500px;
+}
+
+.rightBox{
+	width:400px;
+	height:auto;
+	float:right;
+}
+
+.main{
+	width:100%;
+	height:auto;
+}
+
+
