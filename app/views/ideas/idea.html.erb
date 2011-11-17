@@ -23,11 +23,13 @@
 		<%= clearBox %>
 	</div>
 
-	<div>
-		<strong>Similar Ideas</strong>
+	<div class="main">
+		<span>Similar Ideas</span>
 	
 		<div id="similarIdeas">
 			<%= render :partial => "idea", :collection => @similarIdeas %>
+
+			<%= clearBox %>
 		</div>
 	</div>
 </div>

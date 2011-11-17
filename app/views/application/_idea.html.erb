@@ -1,7 +1,7 @@
-<div>
+<div class="item left">
 	<div><%= link_to_idea idea %> por <%= link_to_profile idea.user %></div>
 
-	<div><%= idea.category.category %></div>
+	<div><%= link_to_category idea.category %></div>
 
 	<div><%= idea.short_description %></div>
 
