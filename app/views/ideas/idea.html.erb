@@ -1,0 +1,23 @@
+<div>
+	<div id="ideaContent">
+		<%= render "ideaInfo" %>
+	</div>
+
+	<% if userLogedIn && @idea.user_id == @user.id %>
+		<div>
+			<%= link_to "Edit idea", editIdea_path(@idea.id), :remote => true %>
+		</div>
+	<% end %>
+
+	<div id="addToFavorites">
+		<%= render "addToFavorites" %>
+	</div>
+
+	<div>
+		<strong>Similar Ideas</strong>
+	</div>
+	
+	<div id="similarIdeas">
+		<%= render :partial => "idea", :collection => @similarIdeas %>
+	</div>
+</div>

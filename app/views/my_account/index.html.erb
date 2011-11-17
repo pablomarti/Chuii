@@ -1,0 +1,18 @@
+<div id="myAccount">
+	<div id="personalInformation">
+		Name: <%= @user.fullName %> <br />
+		Birthday: <%= @user.birthday %>
+	</div>
+
+	<div id="ideasManager">
+		<div id="topMenu">
+			<%= link_to "My ideas", loadMyIdeas_path(1), :remote => true %>
+			<%= link_to "Suggested ideas", loadMyIdeas_path(2), :remote => true %>
+			<%= link_to "Favorite ideas", loadMyIdeas_path(3), :remote => true %>
+		</div>
+
+		<div id="feed">
+			<%= render :partial => "idea", :collection => @ideas %>
+		</div>
+	</div>
+</div>

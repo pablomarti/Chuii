@@ -1,0 +1,21 @@
+<div id="ideasContainer" class="leftFeed">
+	<div>
+		<%= link_to "Latest ideas", loadIdeas_path(1), :remote => true %>
+		<%= link_to "Top ideas", loadIdeas_path(2), :remote => true %>
+		<% if userLogedIn %>
+			<%= link_to "My ideas", loadIdeas_path(5), :remote => true %>
+			<%= link_to "Suggested ideas", loadIdeas_path(3), :remote => true %>
+			<%= link_to "Favorite ideas", loadIdeas_path(4), :remote => true %>
+		<% end %>
+	</div>
+
+	<div id="feed">
+		<%= render :partial => "idea", :collection => @ideas %>
+	</div>
+</div>
+
+<div id="newIdea" class="rightBox">
+	<%= render :partial => "newIdea" %>
+</div>
+
+<%= clearBox %>

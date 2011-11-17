@@ -1,0 +1,9 @@
+<div id="lastIdeas">
+	<%= render :partial => "idea", :collection => @ideas %>
+</div>
+
+<div id="loadMore">
+	<% if @loadMore %>
+		<%= link_to "Load more", loadMore_path, :remote => true %>
+	<% end %>
+</div>

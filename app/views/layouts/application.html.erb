@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>Chuii!</title>
+	  <%= stylesheet_link_tag    "application" %>
+	  <%= javascript_include_tag "application" %>
+	  <%= csrf_meta_tags %>
+	</head>
+
+	<body>
+		<div id="header">
+			<div id="userInfo">
+				<%= render :partial => "headerUserInfo" %>
+			</div>
+
+			<div id="search">
+				<%= render :partial => "headerSearch" %>
+			</div>
+		</div>
+
+		<div id="content">
+			<%= yield %>
+		</div>
+
+		<div id="footer">
+			Copyright &copy; 2011 Chuii.com developed by <a href="http://www.neurock.com" target="_BLANK">Neurock.com</a> a branch of <a href="http://www.greenmediaagency.com/" class="linkfotterMenu" target="_BLANK">Green Media Agency</a>
+		</div>
+	</body>
+</html>

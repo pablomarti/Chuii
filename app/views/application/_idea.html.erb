@@ -1,0 +1,18 @@
+<div>
+	<div><strong><%= idea.idea %></strong> por <%= link_to idea.user.fullName, profile_path(idea.user_id) %></div>
+
+	<div><%= idea.category.category %></div>
+
+	<div><%= idea.short_description %></div>
+
+	<% if !idea.tags.empty? %>
+		<div>
+			Tags: 
+			<% idea.tags.map{ |tag| %>
+				<%= link_to tag.name, {:controller => "main", :action => "search", :search => tag.name} %>
+			<% } %>
+		</div>
+	<% end %>
+
+	<%= link_to "Ver idea", idea_path(idea.id) %>
+</div>

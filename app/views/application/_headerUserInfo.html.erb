@@ -1,0 +1,5 @@
+<%	if userLogedIn %>
+	Hi <%= link_to @user.fullName, profile_path(@user.id) %> | <%= link_to "Salir", logout_path %>
+<%	else %>
+	<%= link_to "FB", login_path %>
+<% 	end  %>

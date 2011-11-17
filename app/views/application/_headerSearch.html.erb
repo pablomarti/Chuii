@@ -1,0 +1,7 @@
+<% searchValue = (!@searchTxt.nil?) ? @searchTxt : "Search" %>
+<%	selectedCategory = @selectedCategory.id rescue 0 %>
+<%= form_for :data, :url => {:controller => "main", :action => "search"}, :method => "get", :html => { :class => "searchForm", :id => "searchForm" } do |f| %>
+	<%= f.text_field :search, :placeholder => searchValue, :class => "bigTextFields" %>
+	<%= f.select :category_id, Category.getCategoriesWithAll.collect{ |c| [c.category, c.id] }, :selected => selectedCategory %>
+	<%= f.submit "Chuii!", :class => "chuiiButton" %>
+<% end %>

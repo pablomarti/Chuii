@@ -1,0 +1,29 @@
+<script type="text/javascript" language="javascript">
+	$(function(){
+    	var sampleTags = ['c++', 'java', 'php', 'coldfusion', 'javascript', 'asp', 'ruby', 'python', 'c', 'scala', 'groovy', 'haskell', 'perl', 'erlang', 'apl', 'cobol', 'go', 'lua'];
+        //$('#myTags').tagit();
+
+        $('#myTags').tagit({
+			    availableTags: sampleTags,
+			    itemName: 'item',
+			    fieldName: 'tags'
+		});
+    });
+</script>
+
+<%= form_for @idea, :url => {:controller => "ideas", :action => "saveIdea", :id => @idea.id}, :remote => true, :html => { :class => "ideaForm", :id => "editIdeaForm" } do |f| %>
+	<%= f.select :category_id, Category.getCategories.collect{ |c| [c.category, c.id] } %><br />
+	<%= f.text_field :idea, :placeholder => "The name of your idea" %><br />
+	<%= f.text_field :short_description, :placeholder => "A short description that describes your idea" %><br />
+	<%= f.text_area :long_description, :placeholder => "What's your idea?" %><br />
+	
+	Do you want to make it public? <%= f.check_box :public, :checked => "checked" %><br />
+	
+	Tags: 
+	<ul id="myTags">
+		<%= raw @idea.tags.collect{ |tag| "<li>#{tag.name}</li>" }.join("") %>
+	</ul><br />
+
+	<%= f.submit :value => "Save" %>
+	<%= link_to "Cancel", cancelEditIdea_path(@idea.id), :remote => true %>
+<% end %>
