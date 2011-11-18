@@ -8,7 +8,7 @@
 </script>
 
 <% if userLogedIn %>
-	<%= form_for :idea, :url => {:controller => "ideas", :action => "saveIdea"}, :remote => true, :html => { :class => "ideaForm", :id => "newIdeaForm" } do |f| %>
+	<%= form_for :idea, :url => {:controller => "ideas", :action => "saveIdea"}, :html => { :class => "ideaForm", :id => "newIdeaForm" } do |f| %>
 		<%= f.select :category_id, Category.getCategories.collect{ |c| [c.category, c.id] } %><br />
 		<%= f.text_field :idea, :placeholder => "The name of your idea" %><br />
 		<%= f.text_field :short_description, :placeholder => "A short description that describes your idea" %><br />

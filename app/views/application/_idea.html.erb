@@ -1,11 +1,13 @@
 <div class="item left">
-	<div><%= link_to_idea idea %> por <%= link_to_profile idea.user %></div>
-
-	<div><%= link_to_category idea.category %></div>
+	<div>
+		<%= link_to_idea idea %><br />
+		by <%= link_to_profile idea.user %>
+		on <%= link_to_category idea.category %>
+	</div>
 
 	<div><%= idea.short_description %></div>
 
-	<%= ideaTags @idea.tags %>
+	<%= ideaTags idea.tags %>
 
 	<%= link_to_idea idea, "View more" %>
 </div>

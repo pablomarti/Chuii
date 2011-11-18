@@ -15,6 +15,8 @@ class IdeasController < ApplicationController
 			if @idea.save
 				@idea.addTags(tags)
 				@couldSave = true
+
+				redirect_to :controller => "ideas", :action => "idea", :id => @idea.id 
 			else
 			end
 		else
@@ -33,10 +35,14 @@ class IdeasController < ApplicationController
 	def idea
 		@idea = Idea.find(params[:id]) rescue nil
 		@similarIdeas = @idea.similarIdeas
+
 		if @idea.nil?
 			redirect_to :controller => "main", :action => "index"
 			return
 		end
+
+		tweets = ConnectorController::getTweets("pablomarti89")
+		logger.debug tweets.inspect
 	end
 
 	def editIdea

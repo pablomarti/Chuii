@@ -14,6 +14,16 @@
 			<div id="addToFavorites">
 				<%= render "addToFavorites" %>
 			</div>
+
+			<div>
+				<span>Similar Ideas</span>
+			
+				<div id="similarIdeas">
+					<%= render :partial => "idea", :collection => @similarIdeas %>
+
+					<%= clearBox %>
+				</div>
+			</div>
 		</div>
 
 		<div id="aboutAuthor" class="right column">
@@ -21,15 +31,5 @@
 		</div>
 
 		<%= clearBox %>
-	</div>
-
-	<div class="main">
-		<span>Similar Ideas</span>
-	
-		<div id="similarIdeas">
-			<%= render :partial => "idea", :collection => @similarIdeas %>
-
-			<%= clearBox %>
-		</div>
 	</div>
 </div>
