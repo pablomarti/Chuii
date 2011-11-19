@@ -19,4 +19,5 @@ Requisitos
 - Sistema operativo GNU/Linux u OSX
 - Ruby 1.9.2 o superior
 - Ruby on Rails 3.1
+- Gestor de base de datos, de preferencia MySQL 5.X con motor innoDB
 - Sphinx 0.9.9
