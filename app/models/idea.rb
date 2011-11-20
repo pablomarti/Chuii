@@ -6,7 +6,7 @@ class Idea < ActiveRecord::Base
 	has_many :tag_ideas, :dependent => :destroy
 	has_many :tags, :through => :tag_ideas
 	has_many :favorite_ideas, :dependent => :destroy
-	has_many :idea_links
+	has_many :idea_links, :dependent => :destroy
 
 	validates :idea, :presence => true
 	validates :short_description, :presence => true
