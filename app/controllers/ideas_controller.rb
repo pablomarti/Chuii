@@ -41,8 +41,9 @@ class IdeasController < ApplicationController
 			return
 		end
 
-		tweets = ConnectorController::getTweets("pablomarti89")
-		logger.debug tweets.inspect
+		#tweets = ConnectorController::getTweets("pablomarti89")
+		wikiCategories = WikiConnectorController::getPages("hades")
+		logger.debug "DATA: " + wikiCategories.inspect
 	end
 
 	def editIdea

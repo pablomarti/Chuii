@@ -3,38 +3,71 @@ require 'json'
 
 class WikiConnectorController < ApplicationController
 
-	def self.getCategories(search)
-	  	buffer = open("http://search.twitter.com/search.json?q=#{search}&rpp=#{TOTAL_TWEETS}&include_entities=true&result_type=mixed").read
-	  	tmpData = JSON.parse(buffer)
-	  	data = tmpData["results"]  
-	  	tweets = []	
+	#Reference: http://www.ibm.com/developerworks/web/library/x-phpwikipedia/index.html
+	#http://dev.storify.com/api/summary
 
-	  	for tweet in data
+	CMLIMIT = 100
+
+	def self.getCategories(search)
+	  	buffer = open("http://en.wikipedia.org/w/api.php?action=query&list=allcategories&acprefix=#{search}&format=json").read
+	  	tmpData = JSON.parse(buffer)
+
+	  	data = tmpData["query"]["allcategories"]
+	  	categories = []	
+
+	  	for item in data
 	  		h = {}
-	  		h[:created_at] = tweet["created_at"]
-	  		h[:from_user] = tweet["from_user"]
-	  		h[:from_user_id] = tweet["from_user_id"]
-	  		h[:from_user_name] = tweet["from_user_name"]
-	  		h[:id] = tweet["id"]
-	  		h[:profile_image_url] = tweet["profile_image_url"]
-	  		h[:source] = tweet["source"]
-	  		h[:text] = tweet["text"]
-	  		tweets << h
+	  		h[:category] = item["*"]
+	  		categories << h
 	  	end
 	  	
-	  	return tweets
+	  	return categories
 	end
 
 	def self.getPagesFromCategory(category)
+	  	buffer = open("http://en.wikipedia.org/w/api.php?action=query&list=categorymembers&cmtitle=Category:#{category}&cmlimit=#{CMLIMIT}&format=json").read
+		tmpData = JSON.parse(buffer)
+
+	  	data = tmpData["query"]["categorymembers"]
+	  	pagesAndSubcategories = []	
+
+	  	for item in data
+	  		h = {}
+	  		h[:pageid] = item["pageid"]
+	  		h[:ns] = item["ns"]
+	  		h[:title] = item["title"] #May have 'Category:', so it needs a recursive function
+	  		pagesAndSubcategories << h
+	  	end
+	  	
+	  	return pagesAndSubcategories
 	end
 
 	def self.getPages(search)
+	  	buffer = open("http://en.wikipedia.org/w/api.php?action=query&list=search&srwhat=text&srsearch=#{search}&format=json").read
+	  	tmpData = JSON.parse(buffer)
+
+	  	data = tmpData["query"]
+	  	pages = []	
+
+	  	totalHits = data["searchinfo"]["totalhits"]
+	  	#nextResults = data["query-continue"]["search"]["sroffset"]
+
+	  	for item in data["search"]
+	  		h = {}
+	  		h[:ns] = item["ns"]
+	  		h[:title] = item["title"] 
+	  		h[:snippet] = item["snippet"] 
+	  		h[:size] = item["size"] 
+	  		h[:wordcount] = item["wordcount"] 
+	  		h[:timestamp] = item["timestamp"] 
+	  		pages << h
+	  	end
+
+	  	return pages
 	end
 
 	def self.getPageContent(page)
-	end
-
-	def self.getPageContentUrl(page)
+	  	buffer = open("http://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&redirects=1&titles=#{page}&format=json").read
 	end
 
 end
