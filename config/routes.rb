@@ -84,6 +84,9 @@ Chui::Application.routes.draw do
   match 'profile/:id' => 'profile#index', :as => 'profile'
   match 'loadProfileIdeas/:id/:item' => 'profile#loadProfileIdeas', :as => 'loadProfileIdeas'
 
+  match 'searcher' => 'searcher#index', :as => 'searcher'
+  match 'results' => 'searcher#results', :as => 'results'
+
   root :to => "main#index"
 
 end

@@ -1,0 +1,6 @@
+<div>
+	<%= form_for :searcher, :url => {:controller => "searcher", :action => "results"} do |f| %>
+		<%= f.text_field :search, :placeholder => "What do you want to know?" %>
+		<%= f.submit "Search", :class => "chuiiButton" %>
+	<% end %>
+</div>
