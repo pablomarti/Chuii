@@ -1,5 +1,5 @@
-<div id="ideasContainer" class="leftFeed">
-	<div>
+<div id="ideasContainer">
+	<div class="maxWidth autoAlign">
 		<%= link_to "Latest ideas", loadIdeas_path(1), :remote => true %>
 		<%= link_to "Top ideas", loadIdeas_path(2), :remote => true %>
 		<% if userLogedIn %>
@@ -9,13 +9,9 @@
 		<% end %>
 	</div>
 
-	<div id="feed">
+	<div id="feed" class="feedIdeas maxWidth">
 		<%= render :partial => "idea", :collection => @ideas %>
 	</div>
-</div>
-
-<div id="newIdea" class="rightBox">
-	<%= render :partial => "newIdea" %>
 </div>
 
 <%= clearBox %>

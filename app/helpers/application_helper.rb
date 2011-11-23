@@ -34,6 +34,17 @@ module ApplicationHelper
 	
 	###################################################################### Auxiliars
 
+	def getTags
+		tags = ""
+		coma = ""
+		data = Tag.order("name ASC")
+		data.map{ |tag|
+			tags += coma + "'#{tag.name}'"
+			coma = ","
+		}
+		return tags
+	end
+
 	def ideaTags(tags)
 		render :partial => "ideaTags", :locals => {:tags => tags}
 	end

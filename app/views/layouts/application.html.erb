@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-	  <title>Chuii!</title>
+	  <title>30Brains</title>
 	  <%= stylesheet_link_tag    "application" %>
 	  <%= javascript_include_tag "application" %>
 	  <%= csrf_meta_tags %>
@@ -9,11 +9,11 @@
 
 	<body>
 		<div id="header">
-			<div id="userInfo">
+			<div id="userInfo" class="maxWidth autoAlign">
 				<%= render :partial => "headerUserInfo" %>
 			</div>
 
-			<div id="search">
+			<div id="search" class="maxWidth autoAlign">
 				<%= render :partial => "headerSearch" %>
 			</div>
 		</div>
@@ -23,7 +23,7 @@
 		</div>
 
 		<div id="footer">
-			Copyright &copy; 2011 Chuii.com developed by <a href="http://www.neurock.com" target="_BLANK">Neurock.com</a> a branch of <a href="http://www.greenmediaagency.com/" class="linkfotterMenu" target="_BLANK">Green Media Agency</a>
+			Copyright &copy; 2011 <a href="http://www.30brains.com">30Brains.com</a> developed by <a href="http://www.neurock.com" target="_BLANK">Neurock.com</a> a branch of <a href="http://www.greenmediaagency.com/" class="linkfotterMenu" target="_BLANK">Green Media Agency</a>
 		</div>
 	</body>
 </html>

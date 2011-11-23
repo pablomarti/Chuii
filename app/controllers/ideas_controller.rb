@@ -1,5 +1,8 @@
 class IdeasController < ApplicationController
 
+	def newIdea
+	end
+
 	def saveIdea
 		@couldSave = false
 

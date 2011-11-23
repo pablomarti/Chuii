@@ -1,5 +1,16 @@
-<%	if userLogedIn %>
-	Hi <%= link_to @user.fullName, profile_path(@user.id) %> | <%= link_to "Salir", logout_path %>
-<%	else %>
-	<%= link_to "FB", login_path %>
-<% 	end  %>
+<div class="left">
+	<%= link_to "Home", index_path %>
+	<%	if userLogedIn %>
+		| <%= link_to "New idea", newIdea_path %> 
+	<%	end %>
+</div>
+
+<div class="right">
+	<%	if userLogedIn %>
+		Hi <%= link_to @user.fullName, profile_path(@user.id) %> | <%= link_to "Logout", logout_path %>
+	<%	else %>
+		<%= link_to "Login with FB", login_path %>
+	<%	end %>
+</div>
+
+<%= clearBox %>

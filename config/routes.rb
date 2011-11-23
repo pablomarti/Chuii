@@ -70,6 +70,7 @@ Chui::Application.routes.draw do
   match 'main/logout', :as => 'logout'
 
   #Ideas
+  match 'newIdea' => 'ideas#newIdea', :as => 'newIdea'
   match 'saveIdea' => 'ideas#saveIdea', :as => 'saveIdea'
   match 'idea/:id' => 'ideas#idea', :as => 'idea'
   match 'addToFavorites/:id' => 'ideas#addToFavorites', :as => 'addToFavorites'
