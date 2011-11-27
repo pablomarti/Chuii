@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111120033759) do
+ActiveRecord::Schema.define(:version => 20111127031225) do
 
   create_table "categories", :force => true do |t|
     t.string   "category",   :limit => 100, :null => false
@@ -43,6 +43,31 @@ ActiveRecord::Schema.define(:version => 20111120033759) do
     t.integer  "source_id"
     t.integer  "sourcekind_id"
     t.integer  "parentlink_id", :default => 0
+  end
+
+  create_table "idea_resource_votes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "idea_id"
+    t.boolean  "valoration"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "idea_resources", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "idea_id"
+    t.string   "url"
+    t.integer  "weight"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "idea_votes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "idea_id"
+    t.boolean  "valoration"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "ideas", :force => true do |t|
@@ -102,6 +127,14 @@ ActiveRecord::Schema.define(:version => 20111120033759) do
 
   create_table "tags", :force => true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_idea_votes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "idea_id"
+    t.boolean  "valoration"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,5 +1,19 @@
 <div>
-	<span class="bigTitle"><%= @idea.idea %></span> in <%= link_to_category @idea.category %> 
+	<div class="left">
+		<span class="bigTitle"><%= @idea.idea %></span><br />
+	</div>
+
+	<div class="right">
+		<% if userLogedIn && @idea.user_id == @user.id %>
+			<%= link_to "Edit idea", editIdea_path(@idea.id), :remote => true %>
+		<% end %>
+	</div>
+
+	<%= clearBox %>
+</div>
+
+<div>
+	<%= link_to_category @idea.category %> 
 </div>
 
 <div>

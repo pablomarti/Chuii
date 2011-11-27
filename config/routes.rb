@@ -77,6 +77,7 @@ Chui::Application.routes.draw do
   match 'removeFromFavorites/:id' => 'ideas#removeFromFavorites', :as => 'removeFromFavorites'
   match 'editIdea/:id' => 'ideas#editIdea', :as => 'editIdea'
   match 'cancelEditIdea/:id' => 'ideas#cancelEditIdea', :as => 'cancelEditIdea'
+  match 'newResource' => 'ideas#newResource'
 
   #My Account
   match 'myAccount' => 'myAccount#index', :as => 'myAccount'
@@ -85,6 +86,13 @@ Chui::Application.routes.draw do
   match 'profile/:id' => 'profile#index', :as => 'profile'
   match 'loadProfileIdeas/:id/:item' => 'profile#loadProfileIdeas', :as => 'loadProfileIdeas'
 
+  #Comments
+  match 'newComment' => 'comments#newComment'
+
+  #Votes Manager
+  match 'makeVote' => 'vote_manager#makeVote'
+
+  #Searcher
   match 'searcher' => 'searcher#index', :as => 'searcher'
   match 'results' => 'searcher#results', :as => 'results'
 

@@ -1,34 +1,54 @@
-<div>
-	<div class="main">
-		<div id="container" class="left space">
-			<div id="ideaContent">
+<div class="maxWidth autoAlign">
+	<div id="contentIdea" class="maxWidth">	
+		<div class="left ideaDescription">
+			<div id="ideaInfo">
 				<%= render "ideaInfo" %>
 			</div>
 
-			<% if userLogedIn && @idea.user_id == @user.id %>
-				<div>
-					<%= link_to "Edit idea", editIdea_path(@idea.id), :remote => true %>
+			<div id="addToFavorites">
+				<% if userLogedIn && @idea.user_id != @user.id %>
+					<%= render "addToFavorites" %>
+				<% end %>
+			</div>
+
+			<%= render :partial => "voteManager", :locals => {:item => "idea", :id => @idea.id} %>
+
+			<% if userLogedIn %>
+				<div id="addResource" class="mainForm">
+					<%= render :partial => "addResource", :locals => {:id => @idea.id} %>
 				</div>
 			<% end %>
 
-			<div id="addToFavorites">
-				<%= render "addToFavorites" %>
+			<div id="feedback">
+				<%= render :partial => "newCommentManager", :locals => {:item => "idea", :id => @idea.id} %>
+
+				<%= render :partial => "commentsManager", :locals => {:collection => @comments} %>
+			</div>
+		</div>
+
+		<div class="right ideaAuxiliars">
+			<div class="author">
+				<%= link_to @idea.user.fullName, profile_path(@idea.user_id) %>
 			</div>
 
-			<div>
-				<span>Similar Ideas</span>
-			
-				<div id="similarIdeas">
-					<%= render :partial => "idea", :collection => @similarIdeas %>
+			<div class="borderLine"></div>
 
-					<%= clearBox %>
+			<div id="resourcesContent">
+				<span>Resources</span>
+
+				<div id="resources">
+					<%= render :partial => "resource", :collection => @resources %>
 				</div>
 			</div>
 		</div>
 
-		<div id="aboutAuthor" class="right column">
-			<%= link_to @idea.user.fullName, profile_path(@idea.user_id) %>
-		</div>
+		<%= clearBox %>
+	</div>
+
+	<div class="borderLine"></div>
+
+	<div id="similarIdeas" class="maxWidth autoAlign">
+		<%= render :partial => "idea", :collection => @similarIdeas %>
 
 		<%= clearBox %>
 	</div>

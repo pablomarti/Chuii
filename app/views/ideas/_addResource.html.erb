@@ -1,0 +1,5 @@
+<%= form_for :resource, :url => {:controller => "ideas", :action => "newResource"}, :remote => true do |f| %>
+	<%= f.hidden_field :idea_id, :value => id %>
+	<%= f.text_field :url, :placeholder => "Put a link you think it can help", :maxlength => 250 %><br />
+	<%= f.submit :value => "Add it" %>
+<% end %>

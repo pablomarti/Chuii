@@ -1,0 +1,11 @@
+<div>
+	<div class="left">
+		<%= link_to truncate(resource.url, :length => 30), resource.url, :target => "blank" %>
+	</div>
+
+	<div class="right">
+		<%= render :partial => "voteManager", :locals => {:item => "resource", :id => resource.id} %>
+	</div>
+
+	<%= clearBox %>
+</div>

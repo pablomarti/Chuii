@@ -1,9 +1,17 @@
-<div id="lastIdeas">
-	<%= render :partial => "idea", :collection => @ideas %>
-</div>
+<div class="container maxWidth">
+	<div id="feed" class="feedIdeas maxWidth">
+		<% if !@ideas.empty? %>
+			<%= render :partial => "idea", :collection => @ideas %>
+		<% else %>
+			<div class="centerBlock">
+				The search of <span class="strong"><%= @searchTxt %></span> did not match any idea
+			</div>
+		<% end %>
+	</div>
 
-<div id="loadMore">
-	<% if @loadMore %>
-		<%= link_to "Load more", loadMore_path, :remote => true %>
-	<% end %>
+	<div id="loadMore">
+		<% if @loadMore %>
+			<%= link_to "Load more", loadMore_path, :remote => true %>
+		<% end %>
+	</div>
 </div>

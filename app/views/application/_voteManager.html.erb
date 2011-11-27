@@ -1,0 +1,9 @@
+<div id="voteManager_<%= item %>">
+	<% if userLogedIn %>
+		<% if @idea.user_id != @user.id %>
+			<%= render :partial => "vote", :locals => {:item => item, :id => id} %>
+		<% end %>
+	<% else %>
+		In order to vote please login with FB	
+	<% end %>
+</div>

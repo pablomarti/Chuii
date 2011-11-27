@@ -7,6 +7,12 @@ class Idea < ActiveRecord::Base
 	has_many :tags, :through => :tag_ideas
 	has_many :favorite_ideas, :dependent => :destroy
 	has_many :idea_links, :dependent => :destroy
+	has_many :idea_resources, :dependent => :destroy
+
+	#Valorations
+	has_many :user_idea_votes, :dependent => :destroy
+	has_many :idea_votes, :dependent => :destroy
+	has_many :idea_resource_votes, :dependent => :destroy
 
 	validates :idea, :presence => true
 	validates :short_description, :presence => true
@@ -20,6 +26,7 @@ class Idea < ActiveRecord::Base
 	      indexes tags.name, :as => :tag_name, :sortable => true
 	      
 	      has :id
+	      has :category_id
 	      has :active
 	      has :public
 	      has :weight, :sortable => true
@@ -81,8 +88,8 @@ class Idea < ActiveRecord::Base
     	    ideas = Idea.search search, :star => true, :match_mode => :any, :page => page, :per_page => perPage, :with => {:active => true, :public => true}
     	    totalElements = Idea.search_count search, :star => true, :match_mode => :any, :with => {:active => true, :public => true}
 		else
-	        ideas = Idea.search search, :star => true, :match_mode => :any, :page => page, :per_page => perPage, :conditions => {:category_id => categoryId}, :with => {:active => true, :public => true}
-	        totalElements = Idea.search_count search, :star => true, :match_mode => :any, :conditions =>{:category_id => categoryId}, :with => {:active => true, :public => true}
+	        ideas = Idea.search search, :star => true, :match_mode => :any, :page => page, :per_page => perPage, :with => {:category_id => categoryId, :active => true, :public => true}
+	        totalElements = Idea.search_count search, :star => true, :match_mode => :any, :with => {:category_id => categoryId, :active => true, :public => true}
 		end
 
 		return [ideas, totalElements, page, perPage]

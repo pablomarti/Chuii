@@ -1,0 +1,7 @@
+<div id="newComment" class="mainForm">
+	<% if userLogedIn %>
+		<%= render :partial => "newComment", :locals => {:item => item, :id => id} %>
+	<% else %>
+			<%= link_to "Login with FB in order to make a comment", login_path %>
+	<% end %>
+</div>

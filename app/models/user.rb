@@ -5,6 +5,12 @@ class User < ActiveRecord::Base
 	has_many :ideas, :dependent => :destroy
 	has_many :user_ideas, :dependent => :destroy
 	has_many :favorite_ideas, :dependent => :destroy
+	has_many :idea_resources, :dependent => :destroy
+
+	#Valorations
+	has_many :user_idea_votes, :dependent => :destroy
+	has_many :idea_votes, :dependent => :destroy
+	has_many :idea_resource_votes, :dependent => :destroy
 
 	def fullName
 		name + " " + lastname
@@ -19,6 +25,14 @@ class User < ActiveRecord::Base
 
 	def popularIdeas
 		#ideas
+	end
+
+	def favoriteIdeas
+		ideas = []
+		favorite_ideas.order("id DESC").map{ |favoriteIdea|
+			ideas << favoriteIdea.idea
+		}
+		return ideas
 	end
 
 	def recentIdeas

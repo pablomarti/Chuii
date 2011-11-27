@@ -1,3 +1,3 @@
 <% if !@idea.nil? %>
-$('#ideaContent').html('<%= escape_javascript(render :partial => "editIdeaForm") %>');
+$('#ideaInfo').html('<%= escape_javascript(render :partial => "editIdeaForm") %>');
 <% end %>

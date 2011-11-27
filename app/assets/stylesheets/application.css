@@ -56,10 +56,20 @@ input{
 	font-size:18px;
 }
 
+.strong{
+	font-weight:bold;
+}
+
+.selectedLink{
+	font-weight:bold;
+	text-decoration:none;
+	font-size:17px;
+}
+
 /********************************** Application **********************************/
 
 .maxWidth{
-	width:1010px;
+	width:986px;
 }
 
 .autoAlign{
@@ -97,7 +107,7 @@ input{
 #footer a{
 	font-size:13px;
 	text-decoration:none;
-	color:#B90504;
+	color:#FFFFFF;
 	font-weight:bold;
 }
 
@@ -166,7 +176,8 @@ input{
 
 /*********************************** Idea Item *************************************/
 .item{
-	width:328px; /* 298px + 2px (from left and right border) = 300px*/
+	/* width: 320px + 5px(left) + 5px(right) + 2px(border left & right) = 332px*/
+	width:320px; 
 	height:200px;
 	margin:5px 10px 5px 0px;
 	border:solid 1px #333333;

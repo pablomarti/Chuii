@@ -7,7 +7,7 @@ class ProfileController < ApplicationController
 			return
 		end
 
-		@ideas = @selectedUser.popularIdeas
+		@ideas = @selectedUser.ideas.order("id DESC")
 	end
 
 	def loadProfileIdeas
@@ -22,7 +22,9 @@ class ProfileController < ApplicationController
 		if item == 1
 			@ideas = @selectedUser.popularIdeas
 		elsif item == 2
-			@ideas = @selectedUser.ideas
+			@ideas = @selectedUser.ideas.order("id DESC")
+		elsif item == 3
+			@ideas = @selectedUser.favoriteIdeas
 		end
 	end
 

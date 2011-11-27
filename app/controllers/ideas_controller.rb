@@ -44,9 +44,21 @@ class IdeasController < ApplicationController
 			return
 		end
 
+		@comments = @idea.user_ideas
+		@resources = @idea.idea_resources
+		
 		#tweets = ConnectorController::getTweets("pablomarti89")
-		wikiCategories = WikiConnectorController::getPages("hades")
-		logger.debug "DATA: " + wikiCategories.inspect
+		#wikiCategories = WikiConnectorController::getPages("hades")
+		#logger.debug "DATA: " + wikiCategories.inspect
+	end
+
+	def newResource
+		@couldSave = false
+		@ideaResource = IdeaResource.new(params[:resource])
+		@ideaResource.user_id = @user.id
+		if @ideaResource.save
+			@couldSave = true
+		end
 	end
 
 	def editIdea
