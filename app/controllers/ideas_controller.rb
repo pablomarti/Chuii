@@ -56,6 +56,7 @@ class IdeasController < ApplicationController
 		@couldSave = false
 		@ideaResource = IdeaResource.new(params[:resource])
 		@ideaResource.user_id = @user.id
+		#@idea = @ideaResource.idea
 		if @ideaResource.save
 			@couldSave = true
 		end

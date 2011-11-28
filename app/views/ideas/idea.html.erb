@@ -11,7 +11,9 @@
 				<% end %>
 			</div>
 
-			<%= render :partial => "voteManager", :locals => {:item => "idea", :id => @idea.id} %>
+			<div>
+				<%= render :partial => "voteManager", :locals => {:item => "idea", :id => @idea.id, :owner => @idea.user_id} %>
+			</div>
 
 			<% if userLogedIn %>
 				<div id="addResource" class="mainForm">

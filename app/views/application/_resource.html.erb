@@ -4,7 +4,7 @@
 	</div>
 
 	<div class="right">
-		<%= render :partial => "voteManager", :locals => {:item => "resource", :id => resource.id} %>
+		<%= render :partial => "voteManager", :locals => {:item => "resource", :id => resource.id, :owner => resource.user_id} %>
 	</div>
 
 	<%= clearBox %>

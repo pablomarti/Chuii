@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111127031225) do
+ActiveRecord::Schema.define(:version => 20111127213848) do
 
   create_table "categories", :force => true do |t|
     t.string   "category",   :limit => 100, :null => false
@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(:version => 20111127031225) do
 
   create_table "idea_resource_votes", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "idea_id"
     t.boolean  "valoration"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "idea_resource_id"
   end
 
   create_table "idea_resources", :force => true do |t|
@@ -133,10 +133,10 @@ ActiveRecord::Schema.define(:version => 20111127031225) do
 
   create_table "user_idea_votes", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "idea_id"
     t.boolean  "valoration"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_idea_id"
   end
 
   create_table "user_ideas", :force => true do |t|

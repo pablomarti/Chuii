@@ -10,6 +10,10 @@ module ApplicationHelper
 		Category.getCategories
 	end
 
+	def currentUser
+		User.find(session[:userId])
+	end
+
 	######################################################################### Links
 
 	def link_to_profile(user)
@@ -51,6 +55,34 @@ module ApplicationHelper
 
 	def clearBox
 		raw '<div class="clear"></div>'
+	end
+
+	def preselectVote(item, id = 0)
+		auxId = ""
+		if id != 0
+			if item == "idea"
+				baseClass = IdeaVote
+				element = "idea_id"
+			elsif item == "resource"
+				baseClass = IdeaResourceVote
+				element = "idea_resource_id"
+			elsif item == "comment"
+				baseClass = UserIdeaVote
+				element = "user_idea_id"
+			end
+
+			userVote = baseClass.where(:user_id => currentUser.id, element => id).first
+			if !userVote.nil?
+				auxId = "#{item}_#{id}_" + (userVote.valoration ? "g" : "b")
+			end
+		end
+
+		str = ""
+		if auxId != ""
+			str = "<script type='text/javascript' language='javascript'>$('#" + auxId + "').addClass('selectedLink');</script>"
+		end
+
+		raw str
 	end
 
 end

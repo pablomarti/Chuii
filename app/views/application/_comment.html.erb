@@ -6,4 +6,8 @@
 	<div>
 		<%= link_to_profile comment.user %> at <%= comment.created_at %>
 	</div>
+
+	<div>
+		<%= render :partial => "voteManager", :locals => {:item => "comment", :id => comment.id, :owner => comment.user_id} %>
+	</div>
 </div>

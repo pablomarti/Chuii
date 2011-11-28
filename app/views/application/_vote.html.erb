@@ -1,2 +1,3 @@
-<%= link_to "Good", {:controller => "vote_manager", :action => "makeVote", :item => item, :id => id, :valoration => 1}, :remote => true, :id => "#{item}_g" %> | 
-<%= link_to "Bad", {:controller => "vote_manager", :action => "makeVote", :item => item, :id => id, :valoration => 0}, :remote => true, :id => "#{item}_b" %>
+<%= link_to "Good", {:controller => "vote_manager", :action => "makeVote", :item => item, :id => id, :valoration => 1}, :remote => true, :id => "#{item}_#{id}_g" %> | 
+<%= link_to "Bad", {:controller => "vote_manager", :action => "makeVote", :item => item, :id => id, :valoration => 0}, :remote => true, :id => "#{item}_#{id}_b" %>
+<%= preselectVote item, id %>

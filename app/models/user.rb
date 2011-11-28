@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 	has_many :idea_resources, :dependent => :destroy
 
 	#Valorations
-	has_many :user_idea_votes, :dependent => :destroy
+	has_many :user_idea_votes, :dependent => :destroy #comments
 	has_many :idea_votes, :dependent => :destroy
 	has_many :idea_resource_votes, :dependent => :destroy
 
